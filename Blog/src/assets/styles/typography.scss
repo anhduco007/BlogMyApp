@@ -1,12 +1,19 @@
 // Font size
-.font-14{
-    font-size: 0.875em;
+$base-font-size: 16;
+@mixin  font-size($size) {
+    font-size: ($size/$base-font-size) + rem;
 }
 .font-12{
-    font-size: 0.75em;
+    @include font-size(12)
+}
+.font-14{
+    @include font-size(14)
 }
 .font-16{
-    font-size: 1em;
+    @include font-size(16)
+}
+.font-18{
+    @include font-size(18)
 }
 
 //Font family
