@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   pages: any[];
@@ -43,18 +43,22 @@ export class HomeComponent implements OnInit {
   ]
 
   totalItem: number = this.fakePost.length;
-  pageSize: number = 9
+  pageSize: number = 6
   totalPage: any[] = []
   currentPage: number;
   getTotalPage() {
     for (let i = 1; i <= Math.ceil(this.totalItem / this.pageSize); i++) {
       this.totalPage.push({ index: i })
     }
+    this.currentPage = 1
   }
   getPages(page: number) {
+    this.currentPage = page
     if (page < 1) {
+      this.currentPage = 1
       this.pages = this.fakePost.slice(0, this.pageSize)
     } else if (page > Math.ceil(this.totalItem / this.pageSize)) {
+      this.currentPage = Math.ceil(this.totalItem / this.pageSize)
       this.pages = this.fakePost.slice(this.fakePost.length - this.pageSize, this.fakePost.length - 1)
     } else {
       let startIndex: number, endIndex: number;

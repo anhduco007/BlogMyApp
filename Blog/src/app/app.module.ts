@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CKEditorModule } from 'ngx-ckeditor';
 
 const routes: Routes = [
    { path: '', loadChildren: './modules/content/content.module#ContentModule' },
@@ -21,7 +22,8 @@ const routes: Routes = [
       BrowserModule,
       RouterModule.forRoot(routes),
       BrowserAnimationsModule,
-      SharedModule
+      SharedModule,
+      CKEditorModule
    ],
    providers: [],
    bootstrap: [
