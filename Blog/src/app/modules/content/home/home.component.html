@@ -1,7 +1,30 @@
 <app-header></app-header>
-<hr>
-<p class="p-test-10 font-test-40">Home work!</p>
-<mat-card>ddd</mat-card>
-<hr>
-<app-footer></app-footer>
 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4" *ngFor="let post of pages">
+            <mat-card>
+                <img mat-card-image [src]="post.img" alt="">
+                <mat-card-content>
+                    <p>{{post.title}}</p>
+                    <p>{{post.content | slice: 0:250}} ... <a href="">Xem thêm</a></p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination d-flex flex-row">
+            <li >
+                <a class="page-link" (click)="getPages(currentPage - 1)">Preview</a>
+            </li>
+            <li *ngFor="let page of totalPage">
+                <a (click)="getPages(page.index)" class="page-link">{{page.index}}</a>
+            </li>
+            <li>
+                <a class="page-link" (click)="getPages(currentPage + 1)">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<!-- <ck-editor name="editor1" [(ngModel)]="editorValue" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor> -->
+<app-footer></app-footer>
